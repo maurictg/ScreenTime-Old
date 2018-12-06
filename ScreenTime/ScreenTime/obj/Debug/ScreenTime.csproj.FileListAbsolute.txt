@@ -53,3 +53,4 @@ C:\Users\MaurICT\Desktop\ScreenTime\ScreenTime\obj\Debug\ScreenTime.csproj.CopyC
 C:\Users\MaurICT\Desktop\ScreenTime\ScreenTime\obj\Debug\ScreenTime.exe
 C:\Users\MaurICT\Desktop\ScreenTime\ScreenTime\obj\Debug\ScreenTime.pdb
 C:\Users\MaurICT\Desktop\ScreenTime\ScreenTime\bin\Debug\HenkTcp.dll
+F:\PROJECTEN\DOTNET\ScreenTime\ScreenTime\bin\Debug\HenkTcp.dll

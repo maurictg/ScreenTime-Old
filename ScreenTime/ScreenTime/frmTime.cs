@@ -94,9 +94,18 @@ namespace ScreenTime
                 {
                     data = data.Replace("#MORE", "");
                     int more = int.Parse(data);
-                    lefttime += more * 60;
+                    int newtime = more * 60;
                     showmsg(more.ToString() + " minuten gekregen!");
+
                     //e.Reply("Tijd gegeven.");
+                    lefttime = newtime;
+                    ST.updatetime(username, lefttime);
+                    Task.Run(() => GUI.restartwindows());
+                    starttime();
+                    pnlMore.Visible = false;
+                    this.TransparencyKey = Color.DimGray;
+                    Period.Stop(); //om te voorkomen dat de period over gaat als er tijd is bijgekregen
+                    pnlTime.Visible = false;
                 }
             });
             
