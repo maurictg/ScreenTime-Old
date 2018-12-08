@@ -74,6 +74,7 @@
             this.btnSshutdown = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnSlogout = new Bunifu.Framework.UI.BunifuThinButton2();
             this.Period = new System.Windows.Forms.Timer(this.components);
+            this.Stopper = new System.Windows.Forms.Timer(this.components);
             this.pnlMessage.SuspendLayout();
             this.pnlTime.SuspendLayout();
             this.pnlLogin.SuspendLayout();
@@ -401,7 +402,7 @@
             // 
             // pnlMore
             // 
-            this.pnlMore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.pnlMore.BackColor = System.Drawing.Color.White;
             this.pnlMore.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMore.Controls.Add(this.label8);
             this.pnlMore.Controls.Add(this.tbElse);
@@ -415,7 +416,7 @@
             this.pnlMore.Controls.Add(this.btnGive);
             this.pnlMore.Controls.Add(this.lblMeerSTNaam);
             this.pnlMore.Controls.Add(this.label7);
-            this.pnlMore.Location = new System.Drawing.Point(186, 316);
+            this.pnlMore.Location = new System.Drawing.Point(229, 314);
             this.pnlMore.Name = "pnlMore";
             this.pnlMore.Size = new System.Drawing.Size(342, 367);
             this.pnlMore.TabIndex = 3;
@@ -556,9 +557,9 @@
             this.btnMCancel.ActiveBorderThickness = 1;
             this.btnMCancel.ActiveCornerRadius = 20;
             this.btnMCancel.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnMCancel.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnMCancel.ActiveForecolor = System.Drawing.Color.White;
             this.btnMCancel.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnMCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnMCancel.BackColor = System.Drawing.Color.White;
             this.btnMCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMCancel.BackgroundImage")));
             this.btnMCancel.ButtonText = "Annuleren";
             this.btnMCancel.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -566,7 +567,7 @@
             this.btnMCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnMCancel.IdleBorderThickness = 1;
             this.btnMCancel.IdleCornerRadius = 20;
-            this.btnMCancel.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnMCancel.IdleFillColor = System.Drawing.Color.White;
             this.btnMCancel.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnMCancel.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnMCancel.Location = new System.Drawing.Point(27, 297);
@@ -582,9 +583,9 @@
             this.btnGive.ActiveBorderThickness = 1;
             this.btnGive.ActiveCornerRadius = 20;
             this.btnGive.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnGive.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnGive.ActiveForecolor = System.Drawing.Color.White;
             this.btnGive.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnGive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnGive.BackColor = System.Drawing.Color.White;
             this.btnGive.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGive.BackgroundImage")));
             this.btnGive.ButtonText = "Toepassen";
             this.btnGive.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -592,7 +593,7 @@
             this.btnGive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnGive.IdleBorderThickness = 1;
             this.btnGive.IdleCornerRadius = 20;
-            this.btnGive.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnGive.IdleFillColor = System.Drawing.Color.White;
             this.btnGive.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnGive.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnGive.Location = new System.Drawing.Point(177, 297);
@@ -635,7 +636,7 @@
             this.pnlShutdown.Controls.Add(this.btnSlogout);
             this.pnlShutdown.Location = new System.Drawing.Point(577, 157);
             this.pnlShutdown.Name = "pnlShutdown";
-            this.pnlShutdown.Size = new System.Drawing.Size(179, 181);
+            this.pnlShutdown.Size = new System.Drawing.Size(179, 192);
             this.pnlShutdown.TabIndex = 4;
             this.pnlShutdown.Visible = false;
             // 
@@ -719,6 +720,11 @@
             // 
             this.Period.Interval = 20000;
             this.Period.Tick += new System.EventHandler(this.Period_Tick);
+            // 
+            // Stopper
+            // 
+            this.Stopper.Interval = 1000;
+            this.Stopper.Tick += new System.EventHandler(this.Stopper_Tick);
             // 
             // frmTime
             // 
@@ -806,5 +812,6 @@
         private Bunifu.Framework.UI.BunifuThinButton2 btnSlogout;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Timer Period;
+        private System.Windows.Forms.Timer Stopper;
     }
 }

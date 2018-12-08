@@ -39,10 +39,6 @@
             this.pnlUInfo = new System.Windows.Forms.Panel();
             this.btnSaveInfo = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnCancelInfo = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.label16 = new System.Windows.Forms.Label();
-            this.tbInfoPass = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.tbUsernameInfo = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.ddUsers2 = new Bunifu.Framework.UI.BunifuDropdown();
@@ -77,6 +73,15 @@
             this.ddUsername = new Bunifu.Framework.UI.BunifuDropdown();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.lblIP = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.btnUserSettings = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnExit = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnRestart = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -91,15 +96,43 @@
             this.label18 = new System.Windows.Forms.Label();
             this.tbApass = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.label17 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.lblIP = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
+            this.tbUsernameInfo = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.tbInfoPass = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.label15 = new System.Windows.Forms.Label();
+            this.pnlIntegration = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.btnCloseAI = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.label30 = new System.Windows.Forms.Label();
+            this.lbWinusers = new System.Windows.Forms.ListBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.cbWindowsName = new System.Windows.Forms.ComboBox();
+            this.swModus = new Bunifu.Framework.UI.BunifuSwitch();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.lblGUN = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.btnIntegrateA = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.tbAnpw2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.pnlPolicy = new System.Windows.Forms.Panel();
+            this.btnCancelPolicy = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnSavePolicy = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.label44 = new System.Windows.Forms.Label();
+            this.swss = new Bunifu.Framework.UI.BunifuSwitch();
+            this.label43 = new System.Windows.Forms.Label();
+            this.swmc = new Bunifu.Framework.UI.BunifuSwitch();
+            this.label42 = new System.Windows.Forms.Label();
+            this.swcmd = new Bunifu.Framework.UI.BunifuSwitch();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.swset = new Bunifu.Framework.UI.BunifuSwitch();
+            this.swtmg = new Bunifu.Framework.UI.BunifuSwitch();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.lblPolicys = new System.Windows.Forms.Label();
             btnSaveTime = new MaterialSkin.Controls.MaterialRaisedButton();
             btnCancelTime = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabs.SuspendLayout();
@@ -113,9 +146,11 @@
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbBar)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.pnlStartup.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnlIntegration.SuspendLayout();
+            this.pnlPolicy.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSaveTime
@@ -174,6 +209,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.White;
+            this.tabPage2.Controls.Add(this.pnlPolicy);
             this.tabPage2.Controls.Add(this.label19);
             this.tabPage2.Controls.Add(this.pbDelUser);
             this.tabPage2.Controls.Add(this.pnlUInfo);
@@ -214,23 +251,25 @@
             // pnlUInfo
             // 
             this.pnlUInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUInfo.Controls.Add(this.lblPolicys);
+            this.pnlUInfo.Controls.Add(this.label45);
+            this.pnlUInfo.Controls.Add(this.cbWindowsName);
+            this.pnlUInfo.Controls.Add(this.tbInfoPass);
+            this.pnlUInfo.Controls.Add(this.tbUsernameInfo);
             this.pnlUInfo.Controls.Add(this.btnSaveInfo);
             this.pnlUInfo.Controls.Add(this.btnCancelInfo);
-            this.pnlUInfo.Controls.Add(this.label16);
-            this.pnlUInfo.Controls.Add(this.tbInfoPass);
             this.pnlUInfo.Controls.Add(this.label15);
-            this.pnlUInfo.Controls.Add(this.tbUsernameInfo);
             this.pnlUInfo.Controls.Add(this.label14);
-            this.pnlUInfo.Location = new System.Drawing.Point(40, 175);
+            this.pnlUInfo.Location = new System.Drawing.Point(361, 63);
             this.pnlUInfo.Name = "pnlUInfo";
-            this.pnlUInfo.Size = new System.Drawing.Size(324, 307);
+            this.pnlUInfo.Size = new System.Drawing.Size(308, 306);
             this.pnlUInfo.TabIndex = 8;
             this.pnlUInfo.Visible = false;
             // 
             // btnSaveInfo
             // 
             this.btnSaveInfo.Depth = 0;
-            this.btnSaveInfo.Location = new System.Drawing.Point(38, 239);
+            this.btnSaveInfo.Location = new System.Drawing.Point(41, 250);
             this.btnSaveInfo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSaveInfo.Name = "btnSaveInfo";
             this.btnSaveInfo.Primary = true;
@@ -243,7 +282,7 @@
             // btnCancelInfo
             // 
             this.btnCancelInfo.Depth = 0;
-            this.btnCancelInfo.Location = new System.Drawing.Point(166, 239);
+            this.btnCancelInfo.Location = new System.Drawing.Point(169, 250);
             this.btnCancelInfo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelInfo.Name = "btnCancelInfo";
             this.btnCancelInfo.Primary = true;
@@ -253,49 +292,12 @@
             this.btnCancelInfo.UseVisualStyleBackColor = true;
             this.btnCancelInfo.Click += new System.EventHandler(this.btnCancelInfo_Click);
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(93, 129);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(130, 30);
-            this.label16.TabIndex = 9;
-            this.label16.Text = "Wachtwoord";
-            // 
-            // tbInfoPass
-            // 
-            this.tbInfoPass.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbInfoPass.Location = new System.Drawing.Point(39, 162);
-            this.tbInfoPass.Name = "tbInfoPass";
-            this.tbInfoPass.Size = new System.Drawing.Size(232, 33);
-            this.tbInfoPass.TabIndex = 8;
-            this.tbInfoPass.UseSystemPasswordChar = true;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(75, 54);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(163, 30);
-            this.label15.TabIndex = 7;
-            this.label15.Text = "Gebruikersnaam";
-            // 
-            // tbUsernameInfo
-            // 
-            this.tbUsernameInfo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUsernameInfo.Location = new System.Drawing.Point(39, 87);
-            this.tbUsernameInfo.Name = "tbUsernameInfo";
-            this.tbUsernameInfo.Size = new System.Drawing.Size(232, 33);
-            this.tbUsernameInfo.TabIndex = 6;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe Print", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label14.Location = new System.Drawing.Point(119, 5);
+            this.label14.Location = new System.Drawing.Point(113, -1);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(66, 43);
             this.label14.TabIndex = 5;
@@ -359,7 +361,7 @@
             this.pnlAdd.Controls.Add(this.tbPass2);
             this.pnlAdd.Controls.Add(this.tbPass1);
             this.pnlAdd.Controls.Add(this.tbUsername);
-            this.pnlAdd.Location = new System.Drawing.Point(393, 272);
+            this.pnlAdd.Location = new System.Drawing.Point(725, 250);
             this.pnlAdd.Name = "pnlAdd";
             this.pnlAdd.Size = new System.Drawing.Size(268, 270);
             this.pnlAdd.TabIndex = 2;
@@ -704,6 +706,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.White;
+            this.tabPage3.Controls.Add(this.pnlIntegration);
             this.tabPage3.Controls.Add(this.panel1);
             this.tabPage3.Controls.Add(this.btnUserSettings);
             this.tabPage3.Controls.Add(this.btnExit);
@@ -718,10 +721,103 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Instellingen";
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label29);
+            this.panel1.Controls.Add(this.label28);
+            this.panel1.Controls.Add(this.lblIP);
+            this.panel1.Controls.Add(this.label27);
+            this.panel1.Controls.Add(this.label26);
+            this.panel1.Controls.Add(this.label25);
+            this.panel1.Controls.Add(this.label24);
+            this.panel1.Controls.Add(this.label23);
+            this.panel1.Location = new System.Drawing.Point(538, 228);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(296, 125);
+            this.panel1.TabIndex = 20;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(45, 101);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(58, 21);
+            this.label29.TabIndex = 25;
+            this.label29.Text = "TCP/IP";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(45, 75);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(49, 21);
+            this.label28.TabIndex = 24;
+            this.label28.Text = "10901";
+            // 
+            // lblIP
+            // 
+            this.lblIP.AutoSize = true;
+            this.lblIP.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIP.Location = new System.Drawing.Point(30, 51);
+            this.lblIP.Name = "lblIP";
+            this.lblIP.Size = new System.Drawing.Size(70, 21);
+            this.lblIP.TabIndex = 23;
+            this.lblIP.Text = "127.0.0.1";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(5, 107);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(34, 13);
+            this.label27.TabIndex = 22;
+            this.label27.Text = "Type:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(4, 81);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(35, 13);
+            this.label26.TabIndex = 21;
+            this.label26.Text = "Poort:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(4, 57);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(20, 13);
+            this.label25.TabIndex = 20;
+            this.label25.Text = "IP:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.label24.Location = new System.Drawing.Point(3, 10);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(275, 24);
+            this.label24.TabIndex = 19;
+            this.label24.Text = "Remote toegang met de app";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(4, 34);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(238, 13);
+            this.label23.TabIndex = 18;
+            this.label23.Text = "Portforward uw router op de volgende gegevens:";
+            // 
             // btnUserSettings
             // 
             this.btnUserSettings.Depth = 0;
-            this.btnUserSettings.Location = new System.Drawing.Point(513, 359);
+            this.btnUserSettings.Location = new System.Drawing.Point(513, 373);
             this.btnUserSettings.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnUserSettings.Name = "btnUserSettings";
             this.btnUserSettings.Primary = true;
@@ -734,7 +830,7 @@
             // btnExit
             // 
             this.btnExit.Depth = 0;
-            this.btnExit.Location = new System.Drawing.Point(327, 359);
+            this.btnExit.Location = new System.Drawing.Point(327, 373);
             this.btnExit.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnExit.Name = "btnExit";
             this.btnExit.Primary = true;
@@ -747,7 +843,7 @@
             // btnRestart
             // 
             this.btnRestart.Depth = 0;
-            this.btnRestart.Location = new System.Drawing.Point(141, 359);
+            this.btnRestart.Location = new System.Drawing.Point(141, 373);
             this.btnRestart.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Primary = true;
@@ -760,20 +856,22 @@
             // pnlStartup
             // 
             this.pnlStartup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlStartup.Controls.Add(this.label34);
+            this.pnlStartup.Controls.Add(this.swModus);
             this.pnlStartup.Controls.Add(this.label22);
             this.pnlStartup.Controls.Add(this.btnInteg);
             this.pnlStartup.Controls.Add(this.label21);
             this.pnlStartup.Controls.Add(this.label20);
-            this.pnlStartup.Location = new System.Drawing.Point(521, 6);
+            this.pnlStartup.Location = new System.Drawing.Point(538, 6);
             this.pnlStartup.Name = "pnlStartup";
-            this.pnlStartup.Size = new System.Drawing.Size(309, 163);
+            this.pnlStartup.Size = new System.Drawing.Size(292, 216);
             this.pnlStartup.TabIndex = 13;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(65, 71);
+            this.label22.Location = new System.Drawing.Point(51, 86);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(181, 26);
             this.label22.TabIndex = 15;
@@ -782,20 +880,20 @@
             // btnInteg
             // 
             this.btnInteg.Depth = 0;
-            this.btnInteg.Location = new System.Drawing.Point(68, 111);
+            this.btnInteg.Location = new System.Drawing.Point(54, 165);
             this.btnInteg.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnInteg.Name = "btnInteg";
             this.btnInteg.Primary = true;
             this.btnInteg.Size = new System.Drawing.Size(180, 37);
             this.btnInteg.TabIndex = 14;
-            this.btnInteg.Text = "ScreenTime Integreren";
+            this.btnInteg.Text = "Screentime integreren";
             this.btnInteg.UseVisualStyleBackColor = true;
             this.btnInteg.Click += new System.EventHandler(this.btnInteg_Click);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(17, 32);
+            this.label21.Location = new System.Drawing.Point(3, 47);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(287, 26);
             this.label21.TabIndex = 13;
@@ -807,29 +905,30 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.label20.Location = new System.Drawing.Point(102, 4);
+            this.label20.Location = new System.Drawing.Point(56, 18);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(84, 24);
+            this.label20.Size = new System.Drawing.Size(197, 24);
             this.label20.TabIndex = 12;
-            this.label20.Text = "Start-Up";
+            this.label20.Text = "Start-Up Instellingen";
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.tbAnpw2);
             this.panel2.Controls.Add(this.tbAnpw);
             this.panel2.Controls.Add(this.btnSaveAPW);
             this.panel2.Controls.Add(this.label18);
             this.panel2.Controls.Add(this.tbApass);
             this.panel2.Location = new System.Drawing.Point(9, 14);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(296, 195);
+            this.panel2.Size = new System.Drawing.Size(275, 218);
             this.panel2.TabIndex = 11;
             // 
             // tbAnpw
             // 
             this.tbAnpw.Depth = 0;
             this.tbAnpw.Hint = "Nieuw wachtwoord";
-            this.tbAnpw.Location = new System.Drawing.Point(22, 93);
+            this.tbAnpw.Location = new System.Drawing.Point(10, 104);
             this.tbAnpw.MouseState = MaterialSkin.MouseState.HOVER;
             this.tbAnpw.Name = "tbAnpw";
             this.tbAnpw.PasswordChar = '\0';
@@ -843,7 +942,7 @@
             // btnSaveAPW
             // 
             this.btnSaveAPW.Depth = 0;
-            this.btnSaveAPW.Location = new System.Drawing.Point(89, 132);
+            this.btnSaveAPW.Location = new System.Drawing.Point(75, 170);
             this.btnSaveAPW.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSaveAPW.Name = "btnSaveAPW";
             this.btnSaveAPW.Primary = true;
@@ -858,17 +957,17 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.label18.Location = new System.Drawing.Point(18, 20);
+            this.label18.Location = new System.Drawing.Point(6, 12);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(244, 24);
+            this.label18.Size = new System.Drawing.Size(264, 24);
             this.label18.TabIndex = 7;
-            this.label18.Text = "Administratorwachtwoord\r\n";
+            this.label18.Text = "Adminwachtwoord wijzigen";
             // 
             // tbApass
             // 
             this.tbApass.Depth = 0;
             this.tbApass.Hint = "Huidig wachtwoord";
-            this.tbApass.Location = new System.Drawing.Point(22, 64);
+            this.tbApass.Location = new System.Drawing.Point(10, 64);
             this.tbApass.MouseState = MaterialSkin.MouseState.HOVER;
             this.tbApass.Name = "tbApass";
             this.tbApass.PasswordChar = '\0';
@@ -889,98 +988,462 @@
             this.label17.TabIndex = 1;
             this.label17.Text = "Instellingen";
             // 
-            // label23
+            // tbUsernameInfo
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(4, 34);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(238, 13);
-            this.label23.TabIndex = 18;
-            this.label23.Text = "Portforward uw router op de volgende gegevens:";
+            this.tbUsernameInfo.Depth = 0;
+            this.tbUsernameInfo.Hint = "Gebruikersnaam";
+            this.tbUsernameInfo.Location = new System.Drawing.Point(13, 85);
+            this.tbUsernameInfo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tbUsernameInfo.Name = "tbUsernameInfo";
+            this.tbUsernameInfo.PasswordChar = '\0';
+            this.tbUsernameInfo.SelectedText = "";
+            this.tbUsernameInfo.SelectionLength = 0;
+            this.tbUsernameInfo.SelectionStart = 0;
+            this.tbUsernameInfo.Size = new System.Drawing.Size(240, 23);
+            this.tbUsernameInfo.TabIndex = 12;
+            this.tbUsernameInfo.UseSystemPasswordChar = false;
             // 
-            // label24
+            // tbInfoPass
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.label24.Location = new System.Drawing.Point(3, 10);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(275, 24);
-            this.label24.TabIndex = 19;
-            this.label24.Text = "Remote toegang met de app";
+            this.tbInfoPass.Depth = 0;
+            this.tbInfoPass.Hint = "Wachtwoord";
+            this.tbInfoPass.Location = new System.Drawing.Point(13, 114);
+            this.tbInfoPass.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tbInfoPass.Name = "tbInfoPass";
+            this.tbInfoPass.PasswordChar = '\0';
+            this.tbInfoPass.SelectedText = "";
+            this.tbInfoPass.SelectionLength = 0;
+            this.tbInfoPass.SelectionStart = 0;
+            this.tbInfoPass.Size = new System.Drawing.Size(240, 23);
+            this.tbInfoPass.TabIndex = 13;
+            this.tbInfoPass.UseSystemPasswordChar = true;
             // 
-            // panel1
+            // label15
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label29);
-            this.panel1.Controls.Add(this.label28);
-            this.panel1.Controls.Add(this.lblIP);
-            this.panel1.Controls.Add(this.label27);
-            this.panel1.Controls.Add(this.label26);
-            this.panel1.Controls.Add(this.label25);
-            this.panel1.Controls.Add(this.label24);
-            this.panel1.Controls.Add(this.label23);
-            this.panel1.Location = new System.Drawing.Point(9, 215);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(296, 138);
-            this.panel1.TabIndex = 20;
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(8, 42);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(155, 30);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "Inloginformatie";
             // 
-            // label25
+            // pnlIntegration
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(4, 57);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(20, 13);
-            this.label25.TabIndex = 20;
-            this.label25.Text = "IP:";
+            this.pnlIntegration.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pnlIntegration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlIntegration.Controls.Add(this.label37);
+            this.pnlIntegration.Controls.Add(this.label36);
+            this.pnlIntegration.Controls.Add(this.btnIntegrateA);
+            this.pnlIntegration.Controls.Add(this.label35);
+            this.pnlIntegration.Controls.Add(this.lblGUN);
+            this.pnlIntegration.Controls.Add(this.label33);
+            this.pnlIntegration.Controls.Add(this.label31);
+            this.pnlIntegration.Controls.Add(this.label32);
+            this.pnlIntegration.Controls.Add(this.lbWinusers);
+            this.pnlIntegration.Controls.Add(this.label30);
+            this.pnlIntegration.Controls.Add(this.btnCloseAI);
+            this.pnlIntegration.Controls.Add(this.label16);
+            this.pnlIntegration.Location = new System.Drawing.Point(722, 359);
+            this.pnlIntegration.Name = "pnlIntegration";
+            this.pnlIntegration.Size = new System.Drawing.Size(551, 320);
+            this.pnlIntegration.TabIndex = 21;
+            this.pnlIntegration.Visible = false;
             // 
-            // label26
+            // label16
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(4, 81);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(35, 13);
-            this.label26.TabIndex = 21;
-            this.label26.Text = "Poort:";
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(128, 6);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(282, 37);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "ScreenTime integreren";
             // 
-            // label27
+            // btnCloseAI
             // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(5, 107);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(34, 13);
-            this.label27.TabIndex = 22;
-            this.label27.Text = "Type:";
+            this.btnCloseAI.Depth = 0;
+            this.btnCloseAI.Location = new System.Drawing.Point(405, 278);
+            this.btnCloseAI.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCloseAI.Name = "btnCloseAI";
+            this.btnCloseAI.Primary = true;
+            this.btnCloseAI.Size = new System.Drawing.Size(141, 37);
+            this.btnCloseAI.TabIndex = 16;
+            this.btnCloseAI.Text = "Sluiten";
+            this.btnCloseAI.UseVisualStyleBackColor = true;
+            this.btnCloseAI.Click += new System.EventHandler(this.btnCloseAI_Click);
             // 
-            // lblIP
+            // label30
             // 
-            this.lblIP.AutoSize = true;
-            this.lblIP.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIP.Location = new System.Drawing.Point(30, 51);
-            this.lblIP.Name = "lblIP";
-            this.lblIP.Size = new System.Drawing.Size(70, 21);
-            this.lblIP.TabIndex = 23;
-            this.lblIP.Text = "127.0.0.1";
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.label30.Location = new System.Drawing.Point(22, 72);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(188, 24);
+            this.label30.TabIndex = 17;
+            this.label30.Text = "Windows-integratie";
             // 
-            // label28
+            // lbWinusers
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(45, 75);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(49, 21);
-            this.label28.TabIndex = 24;
-            this.label28.Text = "10901";
+            this.lbWinusers.FormattingEnabled = true;
+            this.lbWinusers.Location = new System.Drawing.Point(19, 154);
+            this.lbWinusers.Name = "lbWinusers";
+            this.lbWinusers.Size = new System.Drawing.Size(103, 147);
+            this.lbWinusers.TabIndex = 19;
+            this.lbWinusers.SelectedIndexChanged += new System.EventHandler(this.lbWinusers_SelectedIndexChanged);
             // 
-            // label29
+            // label32
             // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(45, 101);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(58, 21);
-            this.label29.TabIndex = 25;
-            this.label29.Text = "TCP/IP";
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(16, 125);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(106, 26);
+            this.label32.TabIndex = 20;
+            this.label32.Text = "Selecteer\r\nWindows gebruikers:";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(23, 96);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(357, 13);
+            this.label31.TabIndex = 21;
+            this.label31.Text = "Kies de windows-gebruikers waarvoor Screen-Time moet worden ingesteld\r\n";
+            // 
+            // cbWindowsName
+            // 
+            this.cbWindowsName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbWindowsName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbWindowsName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbWindowsName.FormattingEnabled = true;
+            this.cbWindowsName.Items.AddRange(new object[] {
+            "Geen"});
+            this.cbWindowsName.Location = new System.Drawing.Point(8, 171);
+            this.cbWindowsName.Name = "cbWindowsName";
+            this.cbWindowsName.Size = new System.Drawing.Size(171, 25);
+            this.cbWindowsName.TabIndex = 15;
+            // 
+            // swModus
+            // 
+            this.swModus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.swModus.BorderRadius = 0;
+            this.swModus.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.swModus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.swModus.Location = new System.Drawing.Point(21, 127);
+            this.swModus.Name = "swModus";
+            this.swModus.Oncolor = System.Drawing.Color.SeaGreen;
+            this.swModus.Onoffcolor = System.Drawing.Color.DarkGray;
+            this.swModus.Size = new System.Drawing.Size(51, 19);
+            this.swModus.TabIndex = 16;
+            this.swModus.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.swModus.Value = false;
+            this.swModus.Click += new System.EventHandler(this.swModus_Click);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(78, 126);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(184, 20);
+            this.label34.TabIndex = 17;
+            this.label34.Text = "Gebruik Windows-accounts";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(151, 124);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(114, 26);
+            this.label33.TabIndex = 22;
+            this.label33.Text = "Naam gekoppelde \r\nScreenTime gebruiker:";
+            // 
+            // lblGUN
+            // 
+            this.lblGUN.AutoSize = true;
+            this.lblGUN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGUN.Location = new System.Drawing.Point(151, 162);
+            this.lblGUN.Name = "lblGUN";
+            this.lblGUN.Size = new System.Drawing.Size(127, 20);
+            this.lblGUN.TabIndex = 23;
+            this.lblGUN.Text = "Geen gekoppeld";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(319, 125);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(109, 13);
+            this.label35.TabIndex = 24;
+            this.label35.Text = "Integreer ScreenTime";
+            // 
+            // btnIntegrateA
+            // 
+            this.btnIntegrateA.Depth = 0;
+            this.btnIntegrateA.Location = new System.Drawing.Point(322, 151);
+            this.btnIntegrateA.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnIntegrateA.Name = "btnIntegrateA";
+            this.btnIntegrateA.Primary = true;
+            this.btnIntegrateA.Size = new System.Drawing.Size(115, 31);
+            this.btnIntegrateA.TabIndex = 25;
+            this.btnIntegrateA.Text = "Integreren";
+            this.btnIntegrateA.UseVisualStyleBackColor = true;
+            this.btnIntegrateA.Click += new System.EventHandler(this.btnIntegrateA_Click);
+            // 
+            // tbAnpw2
+            // 
+            this.tbAnpw2.Depth = 0;
+            this.tbAnpw2.Hint = "Nieuw wachtwoord herhalen";
+            this.tbAnpw2.Location = new System.Drawing.Point(10, 133);
+            this.tbAnpw2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tbAnpw2.Name = "tbAnpw2";
+            this.tbAnpw2.PasswordChar = '\0';
+            this.tbAnpw2.SelectedText = "";
+            this.tbAnpw2.SelectionLength = 0;
+            this.tbAnpw2.SelectionStart = 0;
+            this.tbAnpw2.Size = new System.Drawing.Size(240, 23);
+            this.tbAnpw2.TabIndex = 11;
+            this.tbAnpw2.UseSystemPasswordChar = true;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(151, 198);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(111, 13);
+            this.label36.TabIndex = 26;
+            this.label36.Text = "Integratie verwijderen:";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(151, 217);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(369, 52);
+            this.label37.TabIndex = 27;
+            this.label37.Text = "- Log in op het account waarvan u de ScreenTime-integratie wilt verwijderen.\r\n- D" +
+    "ruk op Windows-Toets + \'R\'\r\n- Typ in: shell:startup\r\n- Verwijder de snelkoppelin" +
+    "g(en) met het ScreenTime-icoontje";
+            // 
+            // pnlPolicy
+            // 
+            this.pnlPolicy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlPolicy.Controls.Add(this.btnCancelPolicy);
+            this.pnlPolicy.Controls.Add(this.btnSavePolicy);
+            this.pnlPolicy.Controls.Add(this.label44);
+            this.pnlPolicy.Controls.Add(this.swss);
+            this.pnlPolicy.Controls.Add(this.label43);
+            this.pnlPolicy.Controls.Add(this.swmc);
+            this.pnlPolicy.Controls.Add(this.label42);
+            this.pnlPolicy.Controls.Add(this.swcmd);
+            this.pnlPolicy.Controls.Add(this.label41);
+            this.pnlPolicy.Controls.Add(this.label40);
+            this.pnlPolicy.Controls.Add(this.swset);
+            this.pnlPolicy.Controls.Add(this.swtmg);
+            this.pnlPolicy.Controls.Add(this.label39);
+            this.pnlPolicy.Controls.Add(this.label38);
+            this.pnlPolicy.Location = new System.Drawing.Point(327, 384);
+            this.pnlPolicy.Name = "pnlPolicy";
+            this.pnlPolicy.Size = new System.Drawing.Size(392, 321);
+            this.pnlPolicy.TabIndex = 23;
+            this.pnlPolicy.Visible = false;
+            // 
+            // btnCancelPolicy
+            // 
+            this.btnCancelPolicy.Depth = 0;
+            this.btnCancelPolicy.Location = new System.Drawing.Point(196, 273);
+            this.btnCancelPolicy.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCancelPolicy.Name = "btnCancelPolicy";
+            this.btnCancelPolicy.Primary = true;
+            this.btnCancelPolicy.Size = new System.Drawing.Size(110, 37);
+            this.btnCancelPolicy.TabIndex = 31;
+            this.btnCancelPolicy.Text = "Sluiten";
+            this.btnCancelPolicy.UseVisualStyleBackColor = true;
+            this.btnCancelPolicy.Click += new System.EventHandler(this.btnCancelPolicy_Click);
+            // 
+            // btnSavePolicy
+            // 
+            this.btnSavePolicy.Depth = 0;
+            this.btnSavePolicy.Location = new System.Drawing.Point(84, 273);
+            this.btnSavePolicy.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnSavePolicy.Name = "btnSavePolicy";
+            this.btnSavePolicy.Primary = true;
+            this.btnSavePolicy.Size = new System.Drawing.Size(110, 37);
+            this.btnSavePolicy.TabIndex = 30;
+            this.btnSavePolicy.Text = "Opslaan";
+            this.btnSavePolicy.UseVisualStyleBackColor = true;
+            this.btnSavePolicy.Click += new System.EventHandler(this.btnSavePolicy_Click);
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(80, 191);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(152, 20);
+            this.label44.TabIndex = 29;
+            this.label44.Text = "Schakel Star-Stable uit";
+            // 
+            // swss
+            // 
+            this.swss.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.swss.BorderRadius = 10;
+            this.swss.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.swss.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.swss.Location = new System.Drawing.Point(23, 191);
+            this.swss.Name = "swss";
+            this.swss.Oncolor = System.Drawing.Color.Teal;
+            this.swss.Onoffcolor = System.Drawing.Color.DarkGray;
+            this.swss.Size = new System.Drawing.Size(51, 19);
+            this.swss.TabIndex = 28;
+            this.swss.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.swss.Value = false;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.Location = new System.Drawing.Point(80, 165);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(142, 20);
+            this.label43.TabIndex = 27;
+            this.label43.Text = "Schakel Minecraft uit";
+            // 
+            // swmc
+            // 
+            this.swmc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.swmc.BorderRadius = 10;
+            this.swmc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.swmc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.swmc.Location = new System.Drawing.Point(23, 166);
+            this.swmc.Name = "swmc";
+            this.swmc.Oncolor = System.Drawing.Color.Teal;
+            this.swmc.Onoffcolor = System.Drawing.Color.DarkGray;
+            this.swmc.Size = new System.Drawing.Size(51, 19);
+            this.swmc.TabIndex = 26;
+            this.swmc.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.swmc.Value = false;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(80, 129);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(198, 20);
+            this.label42.TabIndex = 25;
+            this.label42.Text = "Schakel command prompt uit";
+            // 
+            // swcmd
+            // 
+            this.swcmd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.swcmd.BorderRadius = 10;
+            this.swcmd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.swcmd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.swcmd.Location = new System.Drawing.Point(23, 130);
+            this.swcmd.Name = "swcmd";
+            this.swcmd.Oncolor = System.Drawing.Color.Teal;
+            this.swcmd.Onoffcolor = System.Drawing.Color.DarkGray;
+            this.swcmd.Size = new System.Drawing.Size(51, 19);
+            this.swcmd.TabIndex = 24;
+            this.swcmd.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.swcmd.Value = false;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(80, 104);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(220, 20);
+            this.label41.TabIndex = 23;
+            this.label41.Text = "Schakel Windows-instellingen uit";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Enabled = false;
+            this.label40.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(80, 78);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(152, 20);
+            this.label40.TabIndex = 22;
+            this.label40.Text = "Schakel taakbeheer uit";
+            // 
+            // swset
+            // 
+            this.swset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.swset.BorderRadius = 10;
+            this.swset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.swset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.swset.Location = new System.Drawing.Point(23, 105);
+            this.swset.Name = "swset";
+            this.swset.Oncolor = System.Drawing.Color.Teal;
+            this.swset.Onoffcolor = System.Drawing.Color.DarkGray;
+            this.swset.Size = new System.Drawing.Size(51, 19);
+            this.swset.TabIndex = 21;
+            this.swset.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.swset.Value = false;
+            // 
+            // swtmg
+            // 
+            this.swtmg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.swtmg.BorderRadius = 10;
+            this.swtmg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.swtmg.Enabled = false;
+            this.swtmg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.swtmg.Location = new System.Drawing.Point(23, 79);
+            this.swtmg.Name = "swtmg";
+            this.swtmg.Oncolor = System.Drawing.Color.Teal;
+            this.swtmg.Onoffcolor = System.Drawing.Color.DarkGray;
+            this.swtmg.Size = new System.Drawing.Size(51, 19);
+            this.swtmg.TabIndex = 20;
+            this.swtmg.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.swtmg.Value = true;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(99, 31);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(198, 13);
+            this.label39.TabIndex = 19;
+            this.label39.Text = "Beperk het computergebruik met policy\'s";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.ForeColor = System.Drawing.Color.Teal;
+            this.label38.Location = new System.Drawing.Point(163, 7);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(81, 24);
+            this.label38.TabIndex = 13;
+            this.label38.Text = "Policy\'s";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.label45.Location = new System.Drawing.Point(9, 148);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(217, 20);
+            this.label45.TabIndex = 16;
+            this.label45.Text = "Gekoppeld Windows-account";
+            // 
+            // lblPolicys
+            // 
+            this.lblPolicys.AutoSize = true;
+            this.lblPolicys.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPolicys.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.lblPolicys.Location = new System.Drawing.Point(9, 212);
+            this.lblPolicys.Name = "lblPolicys";
+            this.lblPolicys.Size = new System.Drawing.Size(123, 20);
+            this.lblPolicys.TabIndex = 17;
+            this.lblPolicys.Text = "Policy\'s beheren";
+            this.lblPolicys.Click += new System.EventHandler(this.lblPolicys_Click);
             // 
             // frmAdmin
             // 
@@ -1011,12 +1474,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbBar)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.pnlStartup.ResumeLayout(false);
             this.pnlStartup.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlIntegration.ResumeLayout(false);
+            this.pnlIntegration.PerformLayout();
+            this.pnlPolicy.ResumeLayout(false);
+            this.pnlPolicy.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1058,10 +1525,6 @@
         private System.Windows.Forms.Label label13;
         private Bunifu.Framework.UI.BunifuDropdown ddUsers2;
         private System.Windows.Forms.Panel pnlUInfo;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox tbInfoPass;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox tbUsernameInfo;
         private System.Windows.Forms.Label label14;
         private MaterialSkin.Controls.MaterialRaisedButton btnSaveInfo;
         private MaterialSkin.Controls.MaterialRaisedButton btnCancelInfo;
@@ -1092,5 +1555,42 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
+        private MaterialSkin.Controls.MaterialSingleLineTextField tbUsernameInfo;
+        private MaterialSkin.Controls.MaterialSingleLineTextField tbInfoPass;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Panel pnlIntegration;
+        private MaterialSkin.Controls.MaterialRaisedButton btnCloseAI;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.ListBox lbWinusers;
+        private System.Windows.Forms.ComboBox cbWindowsName;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label34;
+        private Bunifu.Framework.UI.BunifuSwitch swModus;
+        private System.Windows.Forms.Label lblGUN;
+        private System.Windows.Forms.Label label33;
+        private MaterialSkin.Controls.MaterialRaisedButton btnIntegrateA;
+        private System.Windows.Forms.Label label35;
+        private MaterialSkin.Controls.MaterialSingleLineTextField tbAnpw2;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Panel pnlPolicy;
+        private MaterialSkin.Controls.MaterialRaisedButton btnCancelPolicy;
+        private MaterialSkin.Controls.MaterialRaisedButton btnSavePolicy;
+        private System.Windows.Forms.Label label44;
+        private Bunifu.Framework.UI.BunifuSwitch swss;
+        private System.Windows.Forms.Label label43;
+        private Bunifu.Framework.UI.BunifuSwitch swmc;
+        private System.Windows.Forms.Label label42;
+        private Bunifu.Framework.UI.BunifuSwitch swcmd;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label40;
+        private Bunifu.Framework.UI.BunifuSwitch swset;
+        private Bunifu.Framework.UI.BunifuSwitch swtmg;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label lblPolicys;
+        private System.Windows.Forms.Label label45;
     }
 }

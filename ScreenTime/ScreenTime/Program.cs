@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ScreenTime
@@ -19,6 +17,25 @@ namespace ScreenTime
             if (args.Contains("usersettings"))
             {
                 Application.Run(new frmSettings());
+            }
+            else if(args.Contains("directlogin"))
+            {
+                string winuser = Environment.UserName;
+                Application.Run(new frmTime(ST.getuser(winuser), true));
+            }
+            else if(args.Contains("install"))
+            {
+                string pth = System.Reflection.Assembly.GetEntryAssembly().Location;
+                string ename = System.IO.Path.GetFileName(pth);
+                string[] files = System.IO.Directory.GetFiles(Application.StartupPath);
+                System.IO.Directory.CreateDirectory("C:\\ScreenTime");
+                foreach(string file in files)
+                {
+                    System.IO.File.Copy(file, "C:\\Screentime\\" + System.IO.Path.GetFileName(file));
+                }
+                MessageBox.Show("Restarting to finish installation...");
+                System.Diagnostics.Process.Start("C:\\ScreenTime\\" + ename);
+                Application.ExitThread();
             }
             else
             {

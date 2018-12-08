@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Diagnostics;
 using System.IO;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using HenkTcp;
 using System.Threading.Tasks;
@@ -23,11 +24,15 @@ namespace ScreenTime
         string to = string.Empty;
         string ip = WINDOWS.GetLocalIPAddress();
         int port = 10901;
+        bool isDirect = false;
+        string[] policys;
 
-        public frmTime(string username)
+        public frmTime(string username, bool isdirect = false)
         {
             InitializeComponent();
             Task.Run(() => getdata(username));
+            policys = ST.getpolicy(username);
+            isDirect = isdirect;
         }
 
         private void frmTime_Load(object sender, EventArgs e)
@@ -38,7 +43,10 @@ namespace ScreenTime
             pnlLogin.Location = new Point((this.Width - pnlLogin.Width) / 2, (this.Height - pnlLogin.Height) / 2);
             pnlMore.Location = new Point((this.Width - pnlMore.Width) / 2, (this.Height - pnlMore.Height) / 2);
             pnlShutdown.Location = new Point((this.Width - pnlShutdown.Width) / 2, (this.Height - pnlShutdown.Height) / 2);
-
+            if(isDirect)
+            {
+                btnLogout.Enabled = false;
+            }
         }
 
         static HenkTcpServer Server = new HenkTcpServer();
@@ -178,7 +186,8 @@ namespace ScreenTime
             Period.Start();
             Tijd.Start();
             AutoSave.Start();
-            NoTaskmgr.Start();
+            if(policys[0]=="1"){NoTaskmgr.Start();}
+            getpolicy();
             Task.Run(() => ST.updatestamp(username));
             startserver();
         }
@@ -189,6 +198,7 @@ namespace ScreenTime
             AutoSave.Stop();
             Tijd.Stop();
             Stay.Start();
+            Stopper.Stop();
             tijdover();
             ST.updatetime(username, lefttime);
         }
@@ -397,7 +407,7 @@ namespace ScreenTime
         
         private void btnMCancel_Click(object sender, EventArgs e)
         {
-            NoTaskmgr.Start();
+            if (policys[0] == "1") { NoTaskmgr.Start(); }
             pnlMore.Visible = false;
             pnlTime.Visible = true;
             pnlTime.BringToFront();
@@ -486,6 +496,46 @@ namespace ScreenTime
         private void Period_Tick(object sender, EventArgs e)
         {
             checkperiod();
+        }
+
+        private void getpolicy()
+        {
+            if (policys[1] == "1")
+            {
+                killlist.Add("SystemSettings");
+            }
+            if (policys[2] == "1")
+            {
+                killlist.Add("cmd");
+            }
+            if (policys[3] == "1")
+            {
+                killlist.Add("Minecraft.Windows");
+            }
+            if (policys[4] == "1")
+            {
+                killlist.Add("StarStableOnlineLauncher");
+            }
+            Stopper.Start();
+        }
+
+
+        List<string> killlist = new List<string>();
+        int error = 0;
+        string exc = "";
+
+        private void Stopper_Tick(object sender, EventArgs e)
+        {
+            
+            foreach(string processname in killlist)
+            {
+                foreach (var process in Process.GetProcessesByName(processname))
+                {
+                    try { process.Kill(); } catch(Exception ex) { error++; if (error > 20) { exc = ex.ToString(); Console.WriteLine("ERROR: " + exc); } }
+                }
+            }
+            
+
         }
     }
 }

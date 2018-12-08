@@ -68,6 +68,7 @@
             // 
             this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblName.AutoSize = true;
+            this.lblName.BackColor = System.Drawing.Color.White;
             this.lblName.Font = new System.Drawing.Font("Segoe Print", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.lblName.Location = new System.Drawing.Point(177, 73);
@@ -270,6 +271,7 @@
             // 
             // pnlCPW
             // 
+            this.pnlCPW.BackColor = System.Drawing.Color.White;
             this.pnlCPW.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCPW.Controls.Add(this.btnSavePw);
             this.pnlCPW.Controls.Add(this.btnCancel);
@@ -368,6 +370,7 @@
             // 
             // pnlWallpaper
             // 
+            this.pnlWallpaper.BackColor = System.Drawing.Color.White;
             this.pnlWallpaper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pnlWallpaper.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlWallpaper.Controls.Add(this.label8);
@@ -376,7 +379,7 @@
             this.pnlWallpaper.Controls.Add(this.btnSetW);
             this.pnlWallpaper.Controls.Add(this.btnWClose);
             this.pnlWallpaper.Controls.Add(this.label7);
-            this.pnlWallpaper.Location = new System.Drawing.Point(594, 86);
+            this.pnlWallpaper.Location = new System.Drawing.Point(594, 89);
             this.pnlWallpaper.Name = "pnlWallpaper";
             this.pnlWallpaper.Size = new System.Drawing.Size(436, 317);
             this.pnlWallpaper.TabIndex = 12;
@@ -402,7 +405,7 @@
             this.btnWChoose.ActiveForecolor = System.Drawing.Color.White;
             this.btnWChoose.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnWChoose.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnWChoose.BackColor = System.Drawing.SystemColors.Control;
+            this.btnWChoose.BackColor = System.Drawing.Color.White;
             this.btnWChoose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnWChoose.BackgroundImage")));
             this.btnWChoose.ButtonText = "Standaard";
             this.btnWChoose.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -440,7 +443,7 @@
             this.btnSetW.ActiveForecolor = System.Drawing.Color.White;
             this.btnSetW.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnSetW.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnSetW.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSetW.BackColor = System.Drawing.Color.White;
             this.btnSetW.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSetW.BackgroundImage")));
             this.btnSetW.ButtonText = "Instellen";
             this.btnSetW.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -467,7 +470,7 @@
             this.btnWClose.ActiveForecolor = System.Drawing.Color.White;
             this.btnWClose.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnWClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnWClose.BackColor = System.Drawing.SystemColors.Control;
+            this.btnWClose.BackColor = System.Drawing.Color.White;
             this.btnWClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnWClose.BackgroundImage")));
             this.btnWClose.ButtonText = "Sluiten";
             this.btnWClose.Cursor = System.Windows.Forms.Cursors.Hand;

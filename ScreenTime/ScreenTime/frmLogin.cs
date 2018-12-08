@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Threading.Tasks;
-using System.IO;
 
 
 namespace ScreenTime
@@ -11,14 +10,16 @@ namespace ScreenTime
 
         public frmLogin()
         {
+
             KERNEL.setfiles();
             GUI.stopwindows();
 
-            if(ST.testconnection() == false)
+            if (ST.testconnection() == false)
             {
                 MessageBox.Show("Er is iets fout met de database. Screentime werkt niet.", "ERROR, ROEP BEHEERDER", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             InitializeComponent();
+
         }
 
         private void btnLLogin_Click(object sender, EventArgs e)
@@ -28,7 +29,7 @@ namespace ScreenTime
 
         private void login()
         {
-            if(!string.IsNullOrEmpty(tbLPass.Text))
+            if (!string.IsNullOrEmpty(tbLPass.Text))
             {
                 int result = ST.login(ddUsername.selectedValue, tbLPass.Text);
                 if (result == 0)
@@ -49,9 +50,8 @@ namespace ScreenTime
                     Task.Run(() => GUI.restartwindows());
                     Stay.Stop();
                     directory();
-                    
-                    /*Task.Run(() => */start();
-                    //Mag niet: geen elementen aanpassen op andere thread
+
+                    start(ddUsername.selectedValue);
                 }
             }
             else
@@ -61,22 +61,16 @@ namespace ScreenTime
             }
         }
 
-        private void start()
+        private void start(string username)
         {
-            
-            
-            //new Thread(() =>
-            //{
-            frmTime time = new frmTime(ddUsername.selectedValue);
+            frmTime time = new frmTime(username);
             time.Show();
             this.Hide();
-            //}).Start();
-
         }
 
         private void directory()
         {
-            if(ddUsername.selectedValue.ToString() != "Admin")
+            if (ddUsername.selectedValue.ToString() != "Admin")
             {
                 KERNEL.folders(ddUsername.selectedValue, false);
             }
@@ -100,7 +94,7 @@ namespace ScreenTime
         private void lblStatus_MouseDoubleClick(object sender, MouseEventArgs e) { unlocked = true; }
         private void btnCheat_Click(object sender, EventArgs e)
         {
-            if(unlocked == true)
+            if (unlocked == true)
             {
                 GUI.restartwindows();
                 Application.Exit();

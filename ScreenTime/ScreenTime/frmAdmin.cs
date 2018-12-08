@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using MaterialSkin.Animations;
 using System.Reflection;
 using System.Diagnostics;
 using MaterialSkin.Controls;
@@ -17,14 +16,16 @@ namespace ScreenTime
             InitializeComponent();
         }
 
-        
+        string[] allusers;
         string[] userdata;
+        string[] windowsusers;
         string selecteduser = string.Empty;
         List<string> schema = new List<string>();
         List<string> tijdschema = new List<string>();
         string selectedday = string.Empty;
         string from = string.Empty;
         string to = string.Empty;
+        bool useWindowsAccounts = false;
 
         private void frmAdmin_Load(object sender, EventArgs e)
         {
@@ -37,8 +38,14 @@ namespace ScreenTime
             dpTo.ShowUpDown = true;
             pnlAdd.Location = new Point((this.Width - pnlAdd.Width) / 2, (this.Height - pnlAdd.Height) / 2);
             pnlUInfo.Location = new Point((this.Width - pnlUInfo.Width) / 2, (this.Height - pnlUInfo.Height) / 2);
-            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\st.vbs")) { pnlStartup.Enabled = false; }
+            pnlIntegration.Location = new Point((this.Width - pnlIntegration.Width) / 2, (this.Height - pnlIntegration.Height) / 2);
+            pnlPolicy.Location = new Point((this.Width - pnlPolicy.Width) / 2, (this.Height - pnlPolicy.Height) / 2);
             lblIP.Text = WINDOWS.GetLocalIPAddress();
+            windowsusers = WINDOWS.getUsers();
+            lbWinusers.Items.AddRange(windowsusers);
+            cbWindowsName.Items.AddRange(windowsusers);
+            useWindowsAccounts = ST.useWindowsAccounts();
+            swModus.Value = useWindowsAccounts;
         }
 
         private void ddUsername_onItemSelected(object sender, EventArgs e)
@@ -170,11 +177,12 @@ namespace ScreenTime
 
         private void loadusers()
         {
+            allusers = ST.getusers();
             ddUsername.Clear();
             ddUsers2.Clear();
-            ddUsername.Items = ST.getusers();
-            ddUsers2.Items = ST.getusers();
-            try { ddUsername.RemoveItem("Admin"); ddUsers2.RemoveItem("Admin"); } catch { }
+            ddUsername.Items = allusers;
+            ddUsers2.Items = allusers; ;
+            try { ddUsername.RemoveItem("Admin"); } catch { }
         }
 
 
@@ -250,7 +258,15 @@ namespace ScreenTime
 
         private void btnSaveInfo_Click(object sender, EventArgs e)
         {
-            ST.updateuser(selecteduser, tbUsernameInfo.Text, tbInfoPass.Text);
+            if(cbWindowsName.Text != "Geen")
+            {
+                ST.updateuser(selecteduser, tbUsernameInfo.Text, tbInfoPass.Text, cbWindowsName.Text);
+                
+            }
+            else
+            {
+                ST.updateuser(selecteduser, tbUsernameInfo.Text, tbInfoPass.Text);
+            }
             loadusers();
             pnlUInfo.Visible = false;
         }
@@ -267,6 +283,19 @@ namespace ScreenTime
                 tbInfoPass.Text = ST.getpass(selecteduser);
                 pnlUInfo.BringToFront();
                 pnlUInfo.Visible = true;
+                string winuser = ST.getuser(selecteduser, true);
+                loadpolicy(selecteduser);
+
+                if(winuser != null)
+                {
+                    cbWindowsName.Text = winuser;
+                }
+                else
+                {
+                    cbWindowsName.Text = "Geen";
+                }
+
+
             }
             catch { }
             
@@ -276,10 +305,19 @@ namespace ScreenTime
         {
             if(ST.getpass("Admin")==tbApass.Text)
             {
-                ST.updateadmin(tbAnpw.Text);
-                MessageBox.Show("Wijzigingen opgeslagen");
-                tbAnpw.Clear();
-                tbApass.Clear();
+                if(tbAnpw.Text == tbAnpw2.Text)
+                {
+                    ST.updateadmin(tbAnpw.Text);
+                    MessageBox.Show("Wijzigingen opgeslagen");
+                    tbAnpw.Clear();
+                    tbApass.Clear();
+                }
+                else
+                {
+                    tbAnpw2.Clear();
+                    tbApass.Clear();
+                    MessageBox.Show("Ingevoerde wachtwoorden komen niet overeen");
+                }
             }
             else
             {
@@ -318,48 +356,39 @@ namespace ScreenTime
 
         private void btnInteg_Click(object sender, EventArgs e)
         {
+            if (useWindowsAccounts == false)
+            {
+                if(MessageBox.Show("Wilt u ScreenTime integreren in Windows","Screentime integreren?",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+                {
+                    integdefault();
+                }
+            }
+            else
+            {
+                pnlIntegration.Visible = true;
+                pnlIntegration.BringToFront();
+            }
+           
+
+        }
+
+        private void integdefault()
+        {
             try
             {
+                string epath = Assembly.GetEntryAssembly().Location;
                 string startup = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
-                string path = startup + "\\ST";
-                string[] files = Directory.GetFiles(Application.StartupPath);
-                if (!Directory.Exists(path))
-                {
-                    DirectoryInfo di = Directory.CreateDirectory(path);
-                    di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
-                }
-                else
-                {
-                    Directory.Delete(path);
-                    DirectoryInfo di = Directory.CreateDirectory(path);
-                    di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
-                }
-                string pth = Assembly.GetEntryAssembly().Location;
-                string ename = Path.GetFileName(pth);
-                string epath = path + "\\" + ename;
-                string vbs = "Dim objShell" + Environment.NewLine +
-                "Set objShell = WScript.CreateObject(\"WScript.Shell\")" + Environment.NewLine +
-                "objShell.Run(\"\"\"" + epath + "\"\"\")" + Environment.NewLine +
-                "Set objShell = Nothing";
-                foreach (string file in files)
-                {
-                    string from = file;
-                    string to = path + "\\" + Path.GetFileName(file);
-                    File.Copy(from, to);
-                }
-                File.WriteAllText(startup + "\\st.vbs", vbs);
-                KERNEL.createshortcut(epath);
+                string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                KERNEL.createdesktopshortcut(desktop, epath);
+                KERNEL.createusershortcut(startup, epath);
 
                 MessageBox.Show("Integratie gelukt!", "Succes!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("ERROR: "+Environment.NewLine+ex.ToString(), "Integratie mislukt!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR: " + Environment.NewLine + ex.ToString(), "Integratie mislukt!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-
-            
-
         }
 
         private void btnRestart_Click(object sender, EventArgs e)
@@ -424,6 +453,84 @@ namespace ScreenTime
                     schema[13] = to;
                     tijdschema[6] = time;
             
+        }
+
+        private void btnCloseAI_Click(object sender, EventArgs e)
+        {
+            pnlIntegration.Visible = false;
+        }
+
+        private void swModus_Click(object sender, EventArgs e)
+        {
+            if(swModus.Value == true)
+            {
+
+            }
+            else
+            {
+
+            }
+            ST.updatemode(swModus.Value);
+            useWindowsAccounts = swModus.Value;
+        }
+
+        private void lbWinusers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lbWinusers.SelectedItem != null)
+            {
+                string name = ST.getuser(lbWinusers.SelectedItem.ToString());
+                if(string.IsNullOrEmpty(name))
+                {
+                    lblGUN.Text = "Geen gekoppeld";
+                }
+                else
+                {
+                    lblGUN.Text = name;
+                }
+            }
+        }
+
+        private void btnIntegrateA_Click(object sender, EventArgs e)
+        {
+            string un = lbWinusers.SelectedItem.ToString();
+            string startup = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+            string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            startup = startup.Replace(Environment.UserName, un);
+            desktop = desktop.Replace(Environment.UserName, un);
+            string epath = Assembly.GetEntryAssembly().Location;
+            KERNEL.createdirectshortcut(startup, epath);
+            KERNEL.createdesktopshortcut(desktop, epath);
+            //epath: C:\Users\MaurICT\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\ST\ScreenTime.exe
+            MessageBox.Show("ScreenTime geintegreerd voor " + un);
+        }
+
+        private void btnCancelPolicy_Click(object sender, EventArgs e)
+        {
+            pnlPolicy.Visible = false;
+        }
+
+        private void loadpolicy(string username)
+        {
+            string[] policy = ST.getpolicy(username);
+            swtmg.Value = (policy[0] == "0") ? false : true;
+            swset.Value = (policy[1] == "0") ? false : true;
+            swcmd.Value = (policy[2] == "0") ? false : true;
+            swmc.Value = (policy[3] == "0") ? false : true;
+            swss.Value = (policy[4] == "0") ? false : true;
+        }
+
+        private void btnSavePolicy_Click(object sender, EventArgs e)
+        {
+            string username = ddUsers2.selectedValue;
+            string[] policys = { (swtmg.Value) ? "1" : "0", (swset.Value) ? "1" : "0", (swcmd.Value) ? "1" : "0", (swmc.Value) ? "1" : "0", (swss.Value) ? "1" : "0" };
+            ST.updatepolicy(username, policys);
+            pnlPolicy.Visible = false;
+        }
+
+        private void lblPolicys_Click(object sender, EventArgs e)
+        {
+            pnlPolicy.BringToFront();
+            pnlPolicy.Visible = true;
         }
     }
 }

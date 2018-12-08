@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.IO;
 using System.Net;
+using System.Management;
 using Microsoft.Win32;
 using System.Data.SQLite;
 using System.Diagnostics;
@@ -275,12 +276,16 @@ namespace ScreenTime
             SQLiteConnection connection = new SQLiteConnection(connectionstring());
             SQLiteCommand command = new SQLiteCommand("INSERT INTO UserData(Username, Password, Type, Settime, Lefttime) VALUES (@un,@pw,'user','0','0')", connection);
             SQLiteCommand command2 = new SQLiteCommand("INSERT INTO TimeData(Username, monfrom, monto, tuefrom, tueto, wedfrom, wedto, thufrom, thuto, frifrom, frito, satfrom, satto, sunfrom, sunto, mon, tue, wed, thu, fri, sat, sun) VALUES (@un,'00:01','00:02','00:03','00:04','00:05','00:06','00:07','00:08','00:09','00:10','00:11','00:12','00:13','00:14','0','0','0','0','0','0','0')", connection);
+            SQLiteCommand command3 = new SQLiteCommand("INSERT INTO Policy(Username, distmg, disset, discmd, dismc, disss VALUES @un, @false, @false, @false, @false, @false");
             command.Parameters.AddWithValue("@un", username);
             command2.Parameters.AddWithValue("@un", username);
+            command3.Parameters.AddWithValue("@un", username);
+            command3.Parameters.AddWithValue("@false", "0");
             command.Parameters.AddWithValue("@pw", password);
             connection.Open();
             command.ExecuteNonQuery();
             command2.ExecuteNonQuery();
+            command3.ExecuteNonQuery();
             connection.Close();
         }
 
@@ -297,10 +302,57 @@ namespace ScreenTime
             connection.Close();
         }
 
-        public static void updateuser(string username, string un, string pw)
+        public static string getuser(string user, bool getwinuser = false)
+        {
+
+            try
+            {
+                SQLiteConnection connection = new SQLiteConnection(connectionstring());
+                SQLiteCommand command = new SQLiteCommand("", connection);
+
+                if (getwinuser)
+                {
+                    command.CommandText = "SELECT * FROM UserData WHERE Username=@un";
+                    command.Parameters.AddWithValue("@un", user);
+                }
+                else
+                {
+                    command.CommandText = "SELECT * FROM UserData WHERE Windowsuser=@un";
+                    command.Parameters.AddWithValue("@un", user);
+                }
+                connection.Open();
+                string un = ""; string winu = "";
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    un = reader["Username"].ToString();
+                    winu = reader["Windowsuser"].ToString();
+                }
+                connection.Close();
+                return (getwinuser == true) ? winu : un;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("ERROR: " + ex.ToString());
+                return null;
+            }
+           
+
+        }
+
+        public static void updateuser(string username, string un, string pw, string winuser = null)
         {
             SQLiteConnection connection = new SQLiteConnection(connectionstring());
-            SQLiteCommand command = new SQLiteCommand("UPDATE UserData SET Username=@un, Password=@pw WHERE Username=@username", connection);
+            SQLiteCommand command = new SQLiteCommand("", connection);
+            if (winuser != null)
+            {
+                command.CommandText = "UPDATE UserData SET Username=@un, Password=@pw, Windowsuser=@wu WHERE Username=@username";
+                command.Parameters.AddWithValue("@wu", winuser);
+            }
+            else
+            {
+                command.CommandText = "UPDATE UserData SET Username=@un, Password=@pw WHERE Username=@username";
+            }
             SQLiteCommand command2 = new SQLiteCommand("UPDATE TimeData SET Username=@un WHERE Username=@username", connection);
             command.Parameters.AddWithValue("@username", username);
             command2.Parameters.AddWithValue("@username", username);
@@ -348,9 +400,9 @@ namespace ScreenTime
                 command.ExecuteNonQuery();
                 connection.Close();
             }
-            catch
+            catch(Exception ex)
             {
-
+                Console.WriteLine("ERROR: " + ex.ToString());
             }
 
         }
@@ -373,11 +425,41 @@ namespace ScreenTime
                 command.ExecuteNonQuery();
                 connection.Close();
             }
-            catch
+            catch(Exception ex)
             {
-
+                Console.WriteLine("ERROR: " + ex.ToString());
             }
 
+        }
+
+        public static bool useWindowsAccounts()
+        {
+            string mode = string.Empty;
+            SQLiteConnection connection = new SQLiteConnection(connectionstring());
+            SQLiteCommand command = new SQLiteCommand("SELECT * FROM Settings", connection);
+            connection.Open();
+            SQLiteDataReader reader = command.ExecuteReader();
+            while(reader.Read())
+            {
+                mode = reader["Mode"].ToString();
+            }
+            connection.Close();
+            return (mode == "0") ? false : true;
+        }
+
+        public static void updatemode(bool WindowsAccounts)
+        {
+            string val = "0";
+            if(WindowsAccounts)
+            {
+                val = "1";
+            }
+            SQLiteConnection connection = new SQLiteConnection(connectionstring());
+            SQLiteCommand command = new SQLiteCommand("UPDATE Settings SET Mode=@val", connection);
+            command.Parameters.AddWithValue("@val", val);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
         }
 
         public static string getpass(string username)
@@ -410,6 +492,55 @@ namespace ScreenTime
             connection.Close();
             return un;
         }
+
+        public static void updatepolicy(string username, string[] policys)
+        {
+            try
+            {
+                SQLiteConnection connection = new SQLiteConnection(connectionstring());
+                SQLiteCommand command = new SQLiteCommand("UPDATE Policy SET distmg=@tmg, disset=@set, discmd=@cmd, dismc=@mc, disss=@ss WHERE Username=@un", connection);
+                command.Parameters.AddWithValue("@un", username);
+                command.Parameters.AddWithValue("@tmg", policys[0]);
+                command.Parameters.AddWithValue("@set", policys[1]);
+                command.Parameters.AddWithValue("@cmd", policys[2]);
+                command.Parameters.AddWithValue("@mc", policys[3]);
+                command.Parameters.AddWithValue("@ss", policys[4]);
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("ERROR: " + ex.ToString());
+            }
+
+        }
+
+        public static string[] getpolicy(string username)
+        {
+            try
+            {
+                string[] policy = new string[5];
+                SQLiteConnection connection = new SQLiteConnection(connectionstring());
+                SQLiteCommand command = new SQLiteCommand("SELECT * FROM Policy WHERE Username=@un", connection);
+                command.Parameters.AddWithValue("@un", username);
+                connection.Open();
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string[] policys = { (string)reader["distmg"], (string)reader["disset"], (string)reader["discmd"], (string)reader["dismc"], (string)reader["disss"] };
+                    policy = policys;
+                }
+                connection.Close();
+                return policy;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("ERROR: " + ex.ToString());
+                return null;
+            }
+            
+        }
     }
 
     static class KERNEL
@@ -420,23 +551,27 @@ namespace ScreenTime
             {
                 SQLiteConnection.CreateFile(Application.StartupPath + "\\ScreenTime.stdb");
                 SQLiteConnection con = new SQLiteConnection(ST.connectionstring());
-                SQLiteCommand cmd = new SQLiteCommand("CREATE TABLE UserData(Username, Password, Type, Settime, Lefttime, Lastdate, Lasttime)", con);
-                SQLiteCommand cmd0 = new SQLiteCommand("CREATE TABLE Settings(Remember)", con); //remember is voor settings
+                SQLiteCommand cmd = new SQLiteCommand("CREATE TABLE UserData(Username, Password, Type, Settime, Lefttime, Lastdate, Lasttime, Windowsuser)", con);
+                SQLiteCommand cmd0 = new SQLiteCommand("CREATE TABLE Settings(Remember, Mode)", con); //remember is voor settings
                 SQLiteCommand cmd1 = new SQLiteCommand("CREATE TABLE TimeData(Username, monfrom, monto, tuefrom, tueto, wedfrom, wedto, thufrom, thuto, frifrom, frito, satfrom, satto, sunfrom, sunto, mon, tue, wed, thu, fri, sat, sun)", con);
-                SQLiteCommand cmd02 = new SQLiteCommand("INSERT INTO Settings(Remember) VALUES ('NULL')",con);
+                SQLiteCommand cmd01 = new SQLiteCommand("CREATE TABLE Policy(Username, distmg, disset, discmd, dismc, disss)",con);
+                SQLiteCommand cmd02 = new SQLiteCommand("INSERT INTO Settings(Remember, Mode) VALUES ('NULL','0')",con);
                 SQLiteCommand cmd2 = new SQLiteCommand("INSERT INTO UserData(Username, Password, Type) VALUES ('Admin','Admin123','admin')", con);
                 SQLiteCommand cmd3 = new SQLiteCommand("INSERT INTO UserData(Username, Password, Type, Settime, Lefttime) VALUES ('Test','test123','user','30','30')", con);
                 SQLiteCommand cmd4 = new SQLiteCommand("INSERT INTO TimeData(Username, monfrom, monto, tuefrom, tueto, wedfrom, wedto, thufrom, thuto, frifrom, frito, satfrom, satto, sunfrom, sunto, mon, tue, wed, thu, fri, sat, sun) VALUES ('Test','00:01','00:02','00:03','00:04','00:05','00:06','00:07','00:08','00:09','00:10','00:11','00:12','00:13','00:14','0','0','0','0','0','0','0')", con);
-
+                SQLiteCommand cmd5 = new SQLiteCommand("INSERT INTO Policy(Username, distmg, disset, discmd, dismc, disss) VALUES ('Test', '1', @false, @false, @false, @false)",con);
+                cmd5.Parameters.AddWithValue("@false", "0");
 
                 con.Open();
                 cmd.ExecuteNonQuery();
                 cmd0.ExecuteNonQuery();
+                cmd01.ExecuteNonQuery();
                 cmd02.ExecuteNonQuery();
                 cmd1.ExecuteNonQuery();
                 cmd2.ExecuteNonQuery();
                 cmd3.ExecuteNonQuery();
                 cmd4.ExecuteNonQuery();
+                cmd5.ExecuteNonQuery();
                 con.Close();
             }
             if (!File.Exists(Application.StartupPath + "\\Bunifu_UI_v1.5.3.dll") || !File.Exists(Application.StartupPath + "\\MaterialSkin.dll"))
@@ -465,17 +600,41 @@ namespace ScreenTime
 
         }
 
-        public static void createshortcut(string targetpath)
+        public static void createdesktopshortcut(string desktoppath, string executablepath)
         {
-            string patht = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Instellingen.lnk";
+            string patht = Path.Combine(desktoppath, "Instellingen.lnk");
 
             IWshRuntimeLibrary.WshShell wsh = new IWshRuntimeLibrary.WshShell();
             IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)wsh.CreateShortcut(patht);
             shortcut.Arguments = "usersettings";
-            shortcut.TargetPath = targetpath;
+            shortcut.TargetPath = executablepath;
             shortcut.Description = "ScreenTime Instellingen";
-            shortcut.IconLocation = Path.GetDirectoryName(targetpath) + "\\clock.ico";
+            shortcut.IconLocation = Path.GetDirectoryName(executablepath) + "\\clock.ico";
+            shortcut.Save();
+        }
 
+        public static void createdirectshortcut(string startuppath, string executablepath)
+        {
+            string patht = Path.Combine(startuppath, "ScreenTime.lnk");
+
+            IWshRuntimeLibrary.WshShell wsh = new IWshRuntimeLibrary.WshShell();
+            IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)wsh.CreateShortcut(patht);
+            shortcut.Arguments = "directlogin";
+            shortcut.TargetPath = executablepath;
+            shortcut.Description = "ScreenTime";
+            shortcut.IconLocation = Path.GetDirectoryName(executablepath) + "\\clock.ico";
+            shortcut.Save();
+        }
+
+        public static void createusershortcut(string startuppath, string executablepath)
+        {
+            string patht = Path.Combine(startuppath, "ScreenTime.lnk");
+
+            IWshRuntimeLibrary.WshShell wsh = new IWshRuntimeLibrary.WshShell();
+            IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)wsh.CreateShortcut(patht);
+            shortcut.TargetPath = executablepath;
+            shortcut.Description = "ScreenTime";
+            shortcut.IconLocation = Path.GetDirectoryName(executablepath) + "\\clock.ico";
             shortcut.Save();
         }
 
@@ -747,6 +906,21 @@ namespace ScreenTime
             }
             throw new Exception("No network adapters with an IPv4 address in the system!");
         }
+
+        public static string[] getUsers()
+        {
+            List<string> windowsusers = new List<string>();
+            SelectQuery query = new SelectQuery("Win32_UserAccount");
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
+            foreach (ManagementObject envVar in searcher.Get())
+            {
+                windowsusers.Add(envVar["Name"].ToString());
+            }
+
+            return windowsusers.ToArray();
+        }
+
+
     }
 
    
