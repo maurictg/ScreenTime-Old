@@ -276,7 +276,7 @@ namespace ScreenTime
             SQLiteConnection connection = new SQLiteConnection(connectionstring());
             SQLiteCommand command = new SQLiteCommand("INSERT INTO UserData(Username, Password, Type, Settime, Lefttime) VALUES (@un,@pw,'user','0','0')", connection);
             SQLiteCommand command2 = new SQLiteCommand("INSERT INTO TimeData(Username, monfrom, monto, tuefrom, tueto, wedfrom, wedto, thufrom, thuto, frifrom, frito, satfrom, satto, sunfrom, sunto, mon, tue, wed, thu, fri, sat, sun) VALUES (@un,'00:01','00:02','00:03','00:04','00:05','00:06','00:07','00:08','00:09','00:10','00:11','00:12','00:13','00:14','0','0','0','0','0','0','0')", connection);
-            SQLiteCommand command3 = new SQLiteCommand("INSERT INTO Policy(Username, distmg, disset, discmd, dismc, disss VALUES @un, @false, @false, @false, @false, @false");
+            SQLiteCommand command3 = new SQLiteCommand("INSERT INTO Policy(Username, distmg, disset, discmd, dismc, disss) VALUES (@un, @false, @false, @false, @false, @false)",connection);
             command.Parameters.AddWithValue("@un", username);
             command2.Parameters.AddWithValue("@un", username);
             command3.Parameters.AddWithValue("@un", username);
