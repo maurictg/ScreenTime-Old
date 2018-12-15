@@ -1,0 +1,85 @@
+﻿@model LIST.Models.Login
+@{
+    ViewData["Title"] = "Inloggen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    <script type="text/javascript" src="~/Script/materialize.js"></script>
+
+    if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <script>M.toast({ html: '@LIST.Classes.Layout.MessageColor(ViewBag.Message)[0]', classes: '@LIST.Classes.Layout.MessageColor(ViewBag.Message)[1]' });</script>
+    }
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+    <div class="parallax-container">
+        <div class="row">
+            <div class="col s12 m6 offset-m3">
+                <h4 class="white-text center-align"><b>Inloggen</b></h4>
+                <div class="card-panel grey darken-4 white-text" style="display: block; margin-left: auto; margin-right: auto">
+                    @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "login-form" }))
+                    {
+                        <div class="input-field">
+                            <i class="material-icons prefix">account_circle</i>
+                            @Html.TextBoxFor(m => m.Username, new { @class = "white-text", placeholder = "Gebruikersnaam" })
+                            <label class="active" for="Username">Gebruikersnaam</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">lock</i>
+                            @Html.PasswordFor(m => m.Password, new { @class = "white-text", placeholder = "Wachtwoord" })
+                            <label for="Password">Wachtwoord</label>
+                        </div>
+                        <p>
+                            <label>
+                                <input type="checkbox" class="filled-in" checked="checked" id="remember" onchange="cbchanged()" />
+                                <span>Onthoud mij</span>
+                            </label>
+                        </p>
+                        <div class="card-action center-align">
+                            <input type="submit" class="btn teal waves-effect" value="Inloggen">
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="parallax">
+            <img src="~/Style/Pictures/13.jpg">
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $('#mhreflogin').addClass('active');
+        $('#hreflogin').addClass('active');
+    </script>
+
+
+</body>
+</html>
+
+
+<!--
+    //Voorbeeld om een Login te posten met Javascript:
+
+    var form = document.createElement("form");
+    var element1 = document.createElement("input");
+    var element2 = document.createElement("input");
+
+    form.method = "POST";
+    form.action = "Login/Login";
+
+    element1.value='test';
+    element1.name="Username";
+    form.appendChild(element1);
+
+    element2.value='test123';
+    element2.name="Password";
+    form.appendChild(element2);
+
+    document.body.appendChild(form);
+
+    form.submit();
+-->

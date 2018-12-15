@@ -1,0 +1,139 @@
+﻿@model IEnumerable<LIST.Models.News>
+@{
+    ViewBag.Title = "Welkom";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //@model IEnumerable<LIST.Models.Login>
+}
+@{
+
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Welkom</title>
+    <meta name="description" content="Welkom bij LIST Online!" />
+    <meta name="viewport" content="width=device.width, initial-scale=1.0" />
+    <!--De css-bestanden. Die met font.googleapis.com is een icon pack-->
+
+</head>
+<body class="grey darken-3 white-text">
+
+    <div class="parallax-container">
+        <div class="row">
+            <div class="col s12 m6 offset-m3">
+                <h4 class="white-text center-align"><b>Inloggen</b></h4>
+                <div class="card-panel grey darken-4 white-text" style="display: block; margin-left: auto; margin-right: auto">
+
+                    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                    {
+                        <div class="input-field">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="username" type="text" class="white-text " name="username" value="">
+                            <label class="active" for="Username">Gebruikersnaam</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="password" type="password" class="white-text" name="password" value="">
+                            <label for="Password">Wachtwoord</label>
+                        </div>
+                        <p>
+                            <label>
+                                <input type="checkbox" class="filled-in" checked="checked" id="remember" onchange="cbchanged()" />
+                                <span>Onthoud mij</span>
+                            </label>
+                        </p>
+                        <div class="card-action center-align">
+                            <input type="submit" class="btn teal waves-effect" value="Inloggen">
+                        </div>
+
+                    }
+
+                </div>
+
+            </div>
+        </div>
+        <div class="parallax">
+            <img src="~/Style/Pictures/22.jpg">
+        </div>
+        <br><br><br><br><br><br>
+    </div>
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <div class="row center">
+                <h5 class="header col s12 light">Nieuws</h5>
+            </div>
+            <div class="row">
+                @{
+                    if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <div class="col s12 m8 offset-m2">
+                                <div class="card teal darken-1">
+                                    <div class="card-content white-text" id="@item.Id">
+                                        <span class="card-title">@item.Title</span>
+                                        <hr />
+                                        <p><b>@item.Description</b></p><br />
+                                        <p><i>@item.Date</i></p>
+                                    </div>
+                                    <div class="card-action">
+                                        <a href="/Home/Nieuws/@item.Id">Lees verder</a>
+                                    </div>
+                                    <br />
+                                </div>
+                            </div><br /><br />
+                        }
+                    }
+                    else
+                    {
+                        <div class="col s12 m8 offset-m2">
+                            <div class="card teal darken-1">
+                                <div class="card-content white-text" id="0">
+                                    <span class="card-title">Geen nieuws beschikbaar</span>
+                                    <hr />
+                                    <p><b>Nieuws kan niet worden geladen. Dit kan komen omdat de database het niet doet of omdat er geen nieuws is.</b></p><br />
+                                    <p>Als dit probleem blijft optreden neem dan contact op a.u.b.</p>
+                                </div>
+                                <br />
+                            </div>
+                        </div><br /><br />
+                    }
+                }
+
+            </div>
+            <br><br>
+            <!--3>@@Request.ServerVariables["REMOTE_ADDR"].ToString()</!--h3>
+            <h3>@@Request.UserHostAddress.ToString()</h3>
+            <h3>@@Request.UserHostName.ToString()</h3-->
+
+        </div>
+    </div>
+
+    <footer class="page-footer teal">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Over ons</h5>
+                    <p class="grey-text text-lighten-4">Deze website is gemaakt als praktische opdracht voor onze PWS.</p>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                &copy; 2018 <a class="orange-text text-lighten-3" href="#">Calvijn College</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        $('#hrefhome').addClass('active');
+        $('#mhrefhome').addClass('active');
+    </script>
+</body>
+</html>
+

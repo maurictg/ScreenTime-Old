@@ -1,0 +1,27 @@
+﻿@model LIST.Models.Student
+@{
+    ViewBag.Title = "Welkom";
+    Layout = "~/Areas/Leerling/Views/Shared/_LayoutLeerling.cshtml";
+
+    if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <script>M.toast({ html: '@LIST.Classes.Layout.MessageColor(ViewBag.Message)[0]', classes: '@LIST.Classes.Layout.MessageColor(ViewBag.Message)[1]' });</script>
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+    <h3>Welkom</h3>
+    <script type="text/javascript">
+        //Actief tabblad selecteren op deze pagina in menubalk
+        $('#mhrefhome').addClass('active');
+        $('#hrefhome').addClass('active');
+    </script>
+
+</body>
+</html>
+

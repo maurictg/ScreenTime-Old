@@ -1,0 +1,137 @@
+﻿@model IEnumerable<LIST.Models.Student>
+@{
+    ViewData["Title"] = "Decaan - Leerlingen";
+    Layout = "~/Areas/Decaan/Views/Shared/_Decaan.cshtml";
+    if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <script>M.toast({ html: '@LIST.Classes.Layout.MessageColor(ViewBag.Message)[0]', classes: '@LIST.Classes.Layout.MessageColor(ViewBag.Message)[1]' });</script>
+    }
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script type="text/javascript">
+        function onload() {
+            $('.javascr').each(function () {
+                $(this).remove();
+            });
+        }
+    </script>
+    @{
+        <script>
+
+            var leerlingen = [];
+            var id;
+            var leerlingnummer;
+            var voornaam;
+            var achternaam;
+            var telefoon;
+            var email;
+            var woonplaats;
+            var adres;
+            var postcode;
+           </script>
+        foreach (var leerling in Model)
+        {
+            <script class="javascr">
+            leerlingen.push({
+                id: @leerling.Id,
+                leerlingnummer: @leerling.Studentcode,
+                voornaam: '@leerling.Name',
+                achternaam: '@leerling.Lastname',
+                telefoon: '@leerling.Phone',
+                email: '@leerling.Email',
+                woonplaats: '@leerling.Residence',
+                adres: '@leerling.Adress',
+                postcode: '@leerling.Postcode',
+            })
+            </script>
+        }
+    }
+</head>
+<body onload="onload()">
+    <form>
+        <div class="row">
+            <div class="input-field col s12 m3">
+                <select id="sleerlingen">
+                    @foreach (var leerling in Model)
+                    {
+                        string prefix = (!string.IsNullOrEmpty(leerling.Prefix)) ? " " + leerling.Prefix : "";
+                        <option value="@leerling.Id">@leerling.Lastname@prefix,&nbsp;@leerling.Name</option>
+                    }
+                </select>
+                <label>Naam</label>
+            </div>
+
+        </div>
+        &nbsp;<a class="waves-effect btn" onclick="select()">Bekijken</a>
+    </form>
+
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="voornaam" type="text" class="validate">
+                    <label for="voornaam">Voornaam</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="achternaam" type="text" class="validate">
+                    <label for="achternaam">Achternaam</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="telefoon" type="tel" class="validate">
+                    <label for="telefoon">Telefoonnummer</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">email</i>
+                    <input id="email" type="text" class="validate">
+                    <label for="email">Mailadres</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s4">
+                    <input id="leerlingnr" type="text" class="validate">
+                    <label for="leerlingnr">Leerlingnummer</label>
+                </div>
+                <div class="input-field col s8">
+                    <i class="material-icons prefix">home</i>
+                    <input id="adres" type="text" class="validate">
+                    <label for="adres">Adres</label>
+                </div>
+            </div>
+        </form>
+        &nbsp;<a class="waves-effect waves-light btn blue" id="lledit">Bewerken</a>
+    </div>
+
+    <script type="text/javascript">
+        function select() {
+            var id = $('#sleerlingen').val();
+            var selected = leerlingen.filter(p => p.id == id);
+
+            $('#voornaam').val(selected[0].voornaam);
+            $('#achternaam').val(selected[0].achternaam);
+            $('#telefoon').val(selected[0].telefoon);
+            $('#email').val(selected[0].email);
+            $('#leerlingnr').val(selected[0].leerlingnummer);
+            $('#adres').val(selected[0].adres + ", " + selected[0].postcode + " " + selected[0].woonplaats);
+            $('#lledit').attr('href', "/Decaan/Leerling/Edit/" + id);
+
+            $(document).ready(function () {
+                M.updateTextFields();
+            });
+        }
+
+
+
+        $('hrefll').addClass('active');
+        $('mhrefll').addClass('active');
+        function change() {
+            var id = $('#sleerlingen option:selected').val();
+            alert(id);
+        }
+    </script>
+</body>
+</html>

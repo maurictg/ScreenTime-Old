@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/Style/materialize.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="~/Script/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="~/Script/materialize.js"></script>
+</head>
+<body>
+    <nav class="nav-extended">
+        <div class="nav-wrapper grey darken-3" id="nvbar">
+            <a href="#" class="brand-logo">&nbsp;LIST Leerling</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li class="waves-effect" id="hrefhome"><a href="~/Leerling/Home">Home</a></li>
+                <li class="waves-effect" id="hreflob"><a href="~/Leerling/LOB/Index">LOB</a></li>
+
+                <!--Hiertussen moeten al de portalen (LOB enzo) komen, maar moet met JS uit te schakelen zijn-->
+                <li class="waves-effect right-align" id="hreflogin"><a href="~/Login/Signout">Uitloggen</a></li>
+            </ul>
+        </div>
+        <!--Het navigatiemenu voor op telefoons-->
+        <ul class="sidenav" id="mobile-demo">
+            <li id="mhrefhome"><a href="~/Leerling/Home">Home</a></li>
+            <li id="mhreflob"><a href="~/Leerling/LOB/Index">LOB</a></li>
+            <!--Hiertussen moeten al de portalen (LOB enzo) komen, maar moet met JS uit te schakelen zijn.-->
+            <li id="mhreflogout"><a href="~/Login/Signout">Uitloggen</a></li>
+        </ul>
+    </nav>
+
+    @RenderBody()
+
+    <script type="text/javascript" src="~/Script/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="~/Script/materialize.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+            $('.tabs').tabs();
+        });
+    </script>
+
+</body>
+</html>

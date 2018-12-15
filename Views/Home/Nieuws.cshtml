@@ -1,0 +1,56 @@
+﻿@model IEnumerable<LIST.Models.News>
+@{
+    ViewBag.Title = "Nieuws";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body class="grey darken-2">
+    <h2 class="white-text center-align">Nieuws</h2>
+    <div class="row">
+        @{
+            if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <div class="col s12 m8 offset-m2">
+                        <div class="card teal darken-1">
+                            <div class="card-content white-text" id="@item.Id">
+                                <span class="card-title">@item.Title</span>
+                                <hr />
+                                <p><b>@item.Description</b></p><br />
+                                <p>@item.Article</p><br />
+                                <p><i>@item.Date</i></p>
+
+                            </div>
+                            <br />
+                        </div>
+                    </div><br /><br />
+                }
+
+            }
+            else
+            {
+                <div class="col s12 m8 offset-m2">
+                    <div class="card teal darken-1">
+                        <div class="card-content white-text" id="0">
+                            <span class="card-title">Geen nieuws beschikbaar</span>
+                            <hr />
+                            <p><b>Nieuws kan niet worden geladen. Dit kan komen omdat de database het niet doet of omdat er geen nieuws is.</b></p><br />
+                            <p>Als dit probleem blijft optreden neem dan contact op a.u.b.</p>
+                        </div>
+                        <br />
+                    </div>
+                </div><br /><br />
+            }
+        }
+
+    </div>
+
+</body>
+</html>

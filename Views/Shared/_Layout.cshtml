@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device.width, initial-scale=1.0" />
+    <link rel="stylesheet" media="screen" href="~/Style/materialize.css" />
+    <script type="text/javascript" src="~/Script/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="~/Script/materialize.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
+    <title>@ViewBag.Title</title>
+
+</head>
+<body class="grey darken-3 white-text" id="mainbody">
+    <div>
+
+        <!--De navigatiebalk-->
+        <nav class="nav-extended">
+            <div class="nav-wrapper grey darken-3" id="nvbar">
+                <a href="#" class="brand-logo">&nbsp;LIST Online</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li class="waves-effect" id="hrefhome"><a href="~/Home">Home</a></li>
+                    <li class="waves-effect" id="hreflogin"><a href="~/Login">Inloggen</a></li>
+                </ul>
+            </div>
+            <!--Het navigatiemenu voor op telefoons-->
+            <ul class="sidenav" id="mobile-demo">
+                <li id="mhrefhome"><a href="~/Home">Home</a></li>
+                <li id="mhreflogin"><a href="~/Login">Inloggen</a></li>
+            </ul>
+        </nav>
+    </div>
+    @RenderBody() <!--Dit betekent dat de HTML op de body hier geladen moet worden-->
+
+    <!--Dit zijn de script bestanden. Met JQuery-->
+    <script type="text/javascript" src="~/Script/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="~/Script/materialize.js"></script>
+    <!--Hier de JQuery initializeren-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.parallax').parallax();
+            $('.sidenav').sidenav();
+            $('.tabs').tabs();
+        });
+    </script>
+</body>
+</html>
